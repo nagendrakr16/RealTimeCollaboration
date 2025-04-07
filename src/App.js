@@ -1,13 +1,10 @@
-import React from "react";
-import Editor from "./Editor";
+import React from 'react';
+import Editor from './Editor';
+import { v4 as uuidV4 } from 'uuid';
 
-const App = () => {
-  return (
-    <div>
-      <h1>Real-Time Collaborative Editor</h1>
-      <Editor />
-    </div>
-  );
-};
+function App() {
+  const documentId = uuidV4();
+  return <Editor documentId={documentId} />;
+}
 
 export default App;
