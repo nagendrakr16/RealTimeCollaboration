@@ -1,6 +1,6 @@
 # Real Time Collaboration
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), extended into a real-time collaborative text editor using **React**, **Express**, **MongoDB**, and **Socket.IO**.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), extended into a real-time collaborative text editor using **React**, **Express**, **MongoDB**.
 
 ## 📦 Available Scripts
 
@@ -46,7 +46,7 @@ This app can be deployed as two separate services:
 1. **Frontend (React App):**
    - Can be deployed to Vercel, Netlify, or any static hosting service.
 2. **Backend (Express + MongoDB):**
-   - Deploy on Heroku, Render, Railway, or self-hosted with Docker.
+   - Deploy on Heroku, Render.
 
 Make sure to set your `.env` with the following:
 
