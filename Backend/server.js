@@ -1,33 +1,21 @@
-require('dotenv').config();
 const express = require('express');
-const http = require('http');
+const mongoose = require('mongoose');
 const cors = require('cors');
-const { Server } = require('socket.io');
-const path = require('path');
+require('dotenv').config();
 
 const app = express();
-const server = http.createServer(app);
+app.use(cors());
+app.use(express.json());
 
 const PORT = process.env.PORT || 5000;
-const CORS_ORIGIN = process.env.CORS_ORIGIN || "*";
+const MONGO_URI = process.env.MONGO_URI;
 
-app.use(cors({ origin: CORS_ORIGIN }));
-app.use(express.json());
-app.use(express.static(path.join(__dirname, '../frontend/build')));
+mongoose.connect(MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+}).then(() => console.log('MongoDB connected'))
+  .catch(err => console.error(err));
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
-});
+app.use('/api/documents', require('./routes/documents'));
 
-const io = new Server(server, {
-  cors: { origin: CORS_ORIGIN, methods: ["GET", "POST"] }
-});
-
-io.on("connection", (socket) => {
-  console.log(`User connected: ${socket.id}`);
-
-  socket.on("message", (data) => io.emit("message", data));
-  socket.on("disconnect", () => console.log(`User disconnected: ${socket.id}`));
-});
-
-server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
