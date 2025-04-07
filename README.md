@@ -50,3 +50,20 @@ This app can be deployed as two separate services:
 
 Make sure to set your `.env` with the following:
 
+MONGO_URI=your_mongodb_uri PORT=5000
+
+
+## 🧠 Learn More
+
+- [React Documentation](https://reactjs.org/)
+- [Create React App Docs](https://create-react-app.dev/)
+- [React Quill Docs](https://github.com/zenoamaro/react-quill)
+- [Socket.IO Docs](https://socket.io/docs/)
+- [Mongoose Docs](https://mongoosejs.com/)
+
+## 🤝 Contributions
+
+Feel free to fork, submit PRs, or create issues to improve the project.
+
+---
+
